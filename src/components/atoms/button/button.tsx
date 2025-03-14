@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@mui/material/';
+import { Button, ButtonProps } from '@mui/material';
 
 
 interface CustomButtonProps extends ButtonProps {
@@ -7,7 +7,7 @@ interface CustomButtonProps extends ButtonProps {
 
 export const CustomButton = ({ children, disableElevation = true, ...props }: CustomButtonProps) => {
   return (
-    <Button variant="contained" disableElevation={disableElevation} {...props}>
+    <Button sx={{ textTransform: "capitalize" }} variant="contained" disableElevation={disableElevation} {...props}>
       {children}
     </Button>
   );

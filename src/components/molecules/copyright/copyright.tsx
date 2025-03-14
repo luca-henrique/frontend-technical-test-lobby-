@@ -7,13 +7,14 @@ export function Copyright() {
       align="center"
       sx={{
         color: 'text.secondary',
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        gap: "4px"
       }}
     >
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}.
+      {'©'}
+      <Link href="#"><b>Empresa X</b></Link> em parceria com a <Link href="#"><b>Lobby</b></Link>
     </Typography>
   );
 }
