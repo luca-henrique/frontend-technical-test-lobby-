@@ -26,7 +26,7 @@ export const Error404 = () => {
             color: "#22007F",
             marginBottom: { mobile: "34px", tablet: "16px" },
             fontSize: { mobile: "16px", tablet: "20px" },
-            fontWeight: "400",
+            fontWeight: "700",
             textAlign: "center",
           }}
         >
@@ -38,7 +38,7 @@ export const Error404 = () => {
           sx={{
             color: "#64748B",
             marginBottom: { mobile: "64px", tablet: "40px" },
-            fontSize: { mobile: "16px", tablet: "20px" },
+            fontSize: { mobile: "14px", tablet: "16px" },
             fontWeight: "400",
             textAlign: "center",
           }}

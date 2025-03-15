@@ -1,4 +1,9 @@
 export const mock = {
+  common: {
+    buttonBackStep: "Voltar",
+    buttonNextStep: "Continuar",
+  },
+
   intro: {
     title: "Bem Vindo!",
     subTitle: "Estamos muito felizes em ter você em nossa equipe!",
@@ -18,6 +23,39 @@ export const mock = {
     backButton: {
       url: "/",
       label: "Voltar para página inicial",
+    },
+  },
+
+  form: {
+    title: "Finalize o seu resgate",
+    recipientForm: {
+      title: "Dados do destinatário",
+      fullName: "Nome completo",
+      document: "CPF ou CNPJ",
+      email: "E-mail",
+    },
+    address: {
+      title: "Endereço de entrega",
+      cep: "CEP",
+      street: "Rua",
+      number: "Número",
+      neighborhood: "Bairro",
+      document: "Bairro",
+      city: "Cidade",
+      state: "Estado",
+      country: "País",
+      complement: "Complemento",
+    },
+    size: {
+      title: "Tamanhos",
+      shirt: "Qual o seu tamanho (Camisetas)?",
+    },
+    extraQuestions: {
+      title: "Perguntas Extras",
+      hobbie: "Qual o seu hobbie?",
+      birthDate: "Qual a sua data de aniversário?",
+      salesTeam: "Você fará parte do time comercial?",
+      iceCreamFalvors: "Selecione seus 3 sabores preferidos de sorvete",
     },
   },
 };
