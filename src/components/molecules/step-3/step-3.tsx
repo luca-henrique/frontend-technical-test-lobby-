@@ -29,7 +29,7 @@ export const Step3 = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "100px 140px",
+        padding: { mobile: "40px 20px", tablet: "100px 140px" },
       }}
     >
       <CardForm maxWidth={false} disableGutters>

@@ -20,7 +20,7 @@ export const RecipientForm = () => {
         required
         type="text"
       />
-      <BoxRow sx={{ display: "flex", flexDirection: "row", gap: "32px" }}>
+      <BoxRow >
         <Input
           label={document}
           name="document"

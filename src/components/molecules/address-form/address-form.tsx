@@ -44,7 +44,7 @@ export const AddressForm = () => {
         />
       </BoxRow>
       <BoxRow>
-        <BoxRow>
+        <BoxRow sx={{ flexDirection: { mobile: "row", tablet: "row" } }}>
           <Input
             label={number}
             name="number"
@@ -76,7 +76,7 @@ export const AddressForm = () => {
           required
           type="text"
         />
-        <BoxRow width={"100%"}>
+        <BoxRow width={"100%"} sx={{ flexDirection: { mobile: "row", tablet: "row" } }}>
           <Select
             label={state}
             name="uf"

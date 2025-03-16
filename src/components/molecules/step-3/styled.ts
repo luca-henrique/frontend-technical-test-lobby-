@@ -16,8 +16,12 @@ export const CardForm = styled(Container)(({ theme }) => ({
   },
 }));
 
-export const BoxRow = styled(Box)({
+export const BoxRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   gap: "32px",
-});
+
+  [theme.breakpoints.only("mobile")]: {
+    flexDirection: "column",
+  },
+}));

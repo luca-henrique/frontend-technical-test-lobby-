@@ -17,7 +17,7 @@ export const ShirtSizeForm = () => {
     <FormSectionLayout title={title}>
       <Box
         sx={{
-          width: "48%",
+          width: { tablet: "48%", mobile: "100%" },
         }}
       >
         <Select
