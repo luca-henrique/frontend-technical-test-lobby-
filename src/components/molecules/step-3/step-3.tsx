@@ -60,8 +60,8 @@ export const Step3 = () => {
           width={"100%"}
           marginBottom={"40px"}
         >
-          <CustomButton>{buttonBackStep}</CustomButton>
-          <CustomButton>{buttonNextStep}</CustomButton>
+          <CustomButton variant="outlined">{buttonBackStep}</CustomButton>
+          <CustomButton >{buttonNextStep}</CustomButton>
         </Box>
         <Copyright />
       </CardForm>

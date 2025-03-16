@@ -36,13 +36,19 @@ const theme = createTheme({
       md: 700,
       lg: 1024
     }
-  }
+  },
+
 });
 
 if (theme.components) {
   theme.components.MuiButton = {
     styleOverrides: {
-      root: { borderRadius: "60px", padding: "12px 20px", background: "#22007F", fontWeight: 600, fontSize: "14px" }
+      root: { borderRadius: "60px", padding: "12px 20px", background: "#22007F", fontWeight: 600, fontSize: "14px" },
+      outlined: {
+        background: "#fff",
+        border: "1px solid #64748B",
+        color: "#64748B"
+      }
     }
   }
 
