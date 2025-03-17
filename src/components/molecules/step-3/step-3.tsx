@@ -12,12 +12,15 @@ import { AddressForm } from "../address-form/address-form";
 import { ShirtSizeForm } from "../shirt-size-form/shirt-size-form";
 import { ExtraQuestionForm } from "../extra-question-form/extra-question-form";
 import { CardForm } from "./styled";
+import { useFormContext } from "react-hook-form";
 
 export const Step3 = () => {
   const {
     form: { title },
     common: { buttonBackStep, buttonNextStep },
   } = mock;
+
+  const { handleStep, backStep } = useFormContext()
 
   return (
     <Container
@@ -60,8 +63,8 @@ export const Step3 = () => {
           width={"100%"}
           marginBottom={"40px"}
         >
-          <CustomButton variant="outlined">{buttonBackStep}</CustomButton>
-          <CustomButton >{buttonNextStep}</CustomButton>
+          <CustomButton variant="outlined" onClick={() => backStep()}>{buttonBackStep}</CustomButton>
+          <CustomButton onClick={() => handleStep()}>{buttonNextStep}</CustomButton>
         </Box>
         <Copyright />
       </CardForm>
