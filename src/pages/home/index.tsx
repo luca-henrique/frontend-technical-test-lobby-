@@ -1,5 +1,4 @@
 
-import { MainContainer } from "../../components/molecules/main-container/main-container"
 
 import { Step1 } from "../../components/molecules/step-1/step-1"
 import { Step2 } from "../../components/molecules/step-2/step-2"
@@ -14,74 +13,83 @@ import { FormProvider, useForm } from "react-hook-form";
 
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { formStepsSchema } from "../../schemas/steps-form"
+import { RegistrationFormSchemaProps, RegistrationFormTypeEnum, RescuePresentSchema } from "../../schemas/steps-form"
 
 export const Home = () => {
 
-  const methods = useForm({
-    resolver: zodResolver(formStepsSchema),
+  const methods = useForm<RegistrationFormSchemaProps>({
+    //@ts-expect-error
+    resolver: zodResolver(RescuePresentSchema),
     defaultValues: {
-      step: 0,
-      fullName: "",
-      document: "",
-      email: "",
-      street: "",
-      city: "",
-      uf: "",
-      country: "",
-      complement: "",
-      neighborhood: "",
-      iceCreamFalvors: "",
-      salesTeam: "",
-      birthDate: "",
-      hobbie: ""
-    }
+      step: RegistrationFormTypeEnum.StartStep,
+    },
   })
 
 
-  const { watch } = methods
+  const { watch, getValues, handleSubmit, formState: { errors } } = methods
+
+  console.log(errors)
 
   const { step } = watch()
 
-  const STEPS_SIZE = 3
+  const formTypeIsPersonalInformation = step === RegistrationFormTypeEnum.StartStep
+  const formTypeIsShippingAddress = step === RegistrationFormTypeEnum.SelectProductStep
+  const formTypeIsPaymentInformation = step === RegistrationFormTypeEnum.DatailClientProductStep
+  const isFinishStep = step === RegistrationFormTypeEnum.FinishStep
+  const isErrorStep = step === RegistrationFormTypeEnum.ErrorStep
 
+  function setFormType(formType: RegistrationFormTypeEnum) {
+    methods.setValue('step', formType)
+  }
 
-  const handleStep = () => {
+  function handleNextFormType() {
+    switch (step) {
+      case 'startStep':
+        setFormType(RegistrationFormTypeEnum.SelectProductStep)
+        break
+      case RegistrationFormTypeEnum.SelectProductStep:
+        setFormType(RegistrationFormTypeEnum.DatailClientProductStep)
+        break
+      case RegistrationFormTypeEnum.DatailClientProductStep:
+        setFormType(RegistrationFormTypeEnum.FinishStep)
+        console.log('submit', getValues())
 
-    const currentStep = step
-
-    const nextStep = step + 1
-
-
-    if (STEPS_SIZE === step) {
-      console.log('finish')
-    } else {
-      methods.setValue('step', nextStep)
+        break
     }
   }
 
-  const backStep = () => {
-    const nextStep = step - 1
-    methods.setValue('step', nextStep)
+  function handleBackFormType() {
+    switch (step) {
+      case RegistrationFormTypeEnum.StartStep:
+        setFormType(RegistrationFormTypeEnum.SelectProductStep)
+        break
+      case RegistrationFormTypeEnum.SelectProductStep:
+        setFormType(RegistrationFormTypeEnum.DatailClientProductStep)
+        break
+      case RegistrationFormTypeEnum.DatailClientProductStep:
+        setFormType(RegistrationFormTypeEnum.FinishStep)
+        console.log('submit', getValues())
+        break
+    }
   }
-
 
   const args = {
     step,
-    handleStep,
-    backStep,
+    handleNextFormType,
+    handleBackFormType,
     ...methods,
   }
 
   return (
     <FormProvider {...args}>
-      {step === 0 ? <Step1 /> : null}
-      {step === 1 ? <Step2 /> : null}
-      {step === 2 ? <Step3 /> : null}
+      <form onSubmit={handleSubmit(handleNextFormType)}>
+        {formTypeIsPersonalInformation ? <Step1 /> : null}
+        {formTypeIsShippingAddress ? <Step2 /> : null}
+        {formTypeIsPaymentInformation ? <Step3 /> : null}
 
-      {step === 3 ? <Finish /> : null}
-      {step === 4 ? <Error404 /> : null}
-
+        {isFinishStep ? <Finish /> : null}
+        {isErrorStep ? <Error404 /> : null}
+      </form>
     </FormProvider>
   )
 }

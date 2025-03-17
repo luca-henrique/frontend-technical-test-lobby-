@@ -4,7 +4,6 @@ import { mock } from "../../../i18n/mock";
 import { CustomButton } from "../../atoms/button/button";
 import { Product } from "../../organisms/product/product";
 import { Copyright } from "../copyright/copyright";
-import { useFormContext } from "react-hook-form";
 
 export interface IProduct {
   customer_product_id: string;
@@ -140,12 +139,14 @@ export const Step2 = () => {
     common: { buttonBackStep, buttonNextStep },
   } = mock;
 
-  const { handleStep, backStep } = useFormContext()
-
   const isLoading = false;
   const isError = false
 
   const error: Error = new Error()
+
+  function handleBackFormType(): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <Container
@@ -205,8 +206,8 @@ export const Step2 = () => {
           width={"100%"}
           marginBottom={"40px"}
         >
-          <CustomButton variant="outlined" onClick={() => backStep()}>{buttonBackStep}</CustomButton>
-          <CustomButton onClick={() => handleStep()}>{buttonNextStep}</CustomButton>
+          <CustomButton variant="outlined" onClick={() => handleBackFormType()}>{buttonBackStep}</CustomButton>
+          <CustomButton type="submit" >{buttonNextStep}</CustomButton>
         </Box>
         <Copyright />
       </CardForm>

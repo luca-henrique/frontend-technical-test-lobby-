@@ -3,8 +3,11 @@ import { Box } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { grey } from "@mui/material/colors";
 
+
+
 export interface ICheckProduct {
   checked: boolean;
+  control: any
 }
 
 export const CheckProduct = ({ checked }: ICheckProduct) => {
@@ -17,6 +20,9 @@ export const CheckProduct = ({ checked }: ICheckProduct) => {
       bgcolor: "#fff",
       border: `1px solid ${grey[200]}`,
     };
+
+
+
 
   return (
     <Box
@@ -32,10 +38,16 @@ export const CheckProduct = ({ checked }: ICheckProduct) => {
       justifyContent="center"
     >
       {checked && (
+
         <CheckIcon
+
           sx={{ color: "#fff", fontSize: 28 }}
         />
       )}
+
+
+
+
     </Box>
   );
 };

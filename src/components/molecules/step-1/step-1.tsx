@@ -2,12 +2,10 @@ import { mock } from "../../../i18n/mock"
 import { CardContainer } from "../../organisms/card-container/card-container"
 import { CustomButton as Button } from "../../atoms/button/button"
 import { Container } from "@mui/material"
-import { useFormContext } from "react-hook-form"
 
 
 export const Step1 = () => {
 
-  const { handleStep } = useFormContext()
 
   return (
     <Container
@@ -24,7 +22,7 @@ export const Step1 = () => {
       }}
     >
       <CardContainer {...mock.intro}>
-        <Button variant="contained" disableElevation onClick={() => handleStep()}>Começar!</Button>
+        <Button type="submit" variant="contained" disableElevation >Começar!</Button>
       </CardContainer>
     </Container>
   )

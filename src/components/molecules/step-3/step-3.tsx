@@ -20,7 +20,6 @@ export const Step3 = () => {
     common: { buttonBackStep, buttonNextStep },
   } = mock;
 
-  const { handleStep, backStep } = useFormContext()
 
   return (
     <Container
@@ -63,8 +62,8 @@ export const Step3 = () => {
           width={"100%"}
           marginBottom={"40px"}
         >
-          <CustomButton variant="outlined" onClick={() => backStep()}>{buttonBackStep}</CustomButton>
-          <CustomButton onClick={() => handleStep()}>{buttonNextStep}</CustomButton>
+          <CustomButton variant="outlined" onClick={() => handleBackFormType()}>{buttonBackStep}</CustomButton>
+          <CustomButton type="submit" >{buttonNextStep}</CustomButton>
         </Box>
         <Copyright />
       </CardForm>
