@@ -2,6 +2,8 @@
 import { MainContainer } from "../../components/molecules/main-container/main-container"
 
 import { Step1 } from "../../components/molecules/step-1/step-1"
+import { Step2 } from "../../components/molecules/step-2/step-2"
+
 import { Step3 } from "../../components/molecules/step-3/step-3"
 
 
@@ -15,7 +17,7 @@ export const Home = () => {
 
   return (
     <FormProvider {...methods}>
-      <Step3 />
+      <Step2 />
     </FormProvider>
   )
 }

@@ -26,6 +26,8 @@ export const mock = {
     },
   },
 
+  step2: { title: "Escolha o seu presente! 🎁" },
+
   form: {
     title: "Finalize o seu resgate",
     recipientForm: {
