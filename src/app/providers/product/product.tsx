@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
 import { IProductContext } from "./product.interface";
-import { IProduct } from "../../../components/molecules/step-2/step-2";
+import { IProduct } from "../../../components/molecules/select-products-redeem/select-products-redeem";
 
 
 const ProductContext = createContext<IProductContext | undefined>(undefined);

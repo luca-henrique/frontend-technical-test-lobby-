@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 const toggleProduct = (product: IProduct) => {
   // Implementation of toggleProduct
 };
-import { IProduct } from "../../molecules/step-2/step-2";
+import { IProduct } from "../../molecules/select-products-redeem/select-products-redeem";
 import { CheckProduct } from "../../molecules/check-product/check-product";
 import { useProduct } from "../../../app/hook/use-product";
 

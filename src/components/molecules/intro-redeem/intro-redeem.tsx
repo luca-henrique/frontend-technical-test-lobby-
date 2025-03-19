@@ -1,9 +1,14 @@
-import { Container } from "@mui/material"
 import { mock } from "../../../i18n/mock"
 import { CardContainer } from "../../organisms/card-container/card-container"
+import { CustomButton as Button } from "../../atoms/button/button"
+import { Container } from "@mui/material"
+import { useStep } from "../../../app/hook/use-step"
 
 
-export const Finish = () => {
+export const IntroRedeem = () => {
+
+  const { nextStep } = useStep()
+
   return (
     <Container
       maxWidth={false}
@@ -18,7 +23,9 @@ export const Finish = () => {
         padding: { mobile: "40px 20px", tablet: "100px 140px" },
       }}
     >
-      <CardContainer {...mock.finish} />
+      <CardContainer {...mock.intro}>
+        <Button variant="contained" onClick={() => nextStep()} disableElevation >Começar!</Button>
+      </CardContainer>
     </Container>
   )
 }

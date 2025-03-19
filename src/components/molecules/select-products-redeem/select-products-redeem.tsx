@@ -1,11 +1,14 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { CardForm } from "../step-3/styled";
+import { CardForm } from "../details-person-redeem/styled";
 import { mock } from "../../../i18n/mock";
 import { CustomButton } from "../../atoms/button/button";
 import { Product } from "../../organisms/product/product";
 import { Copyright } from "../copyright/copyright";
 import { useRedeem } from "../../../app/hook/use-redeem";
 import { useStep } from "../../../app/hook/use-step";
+import { useProduct } from "../../../app/hook/use-product";
+
+const IS_EMPTY = 0
 
 export interface IProduct {
   customer_product_id: string;
@@ -23,7 +26,7 @@ export interface IProduct {
 }
 
 
-export const Step2 = () => {
+export const SelectProductsRedeem = () => {
 
   const { redeem, isLoading, isError, error } = useRedeem();
   const { nextStep, previousStep } = useStep();
@@ -33,6 +36,9 @@ export const Step2 = () => {
     common: { buttonBackStep, buttonNextStep },
   } = mock;
 
+  const { selectedProducts } = useProduct()
+
+  const isNotSelectedProducts = selectedProducts.length <= IS_EMPTY
 
   return (
     <Container
@@ -100,7 +106,7 @@ export const Step2 = () => {
           <CustomButton variant="outlined" onClick={() => previousStep()}>
             {buttonBackStep}
           </CustomButton>
-          <CustomButton onClick={() => nextStep()}>{buttonNextStep}</CustomButton>
+          <CustomButton disabled={isNotSelectedProducts} onClick={() => nextStep()}>{buttonNextStep}</CustomButton>
         </Box>
         <Copyright />
       </CardForm>

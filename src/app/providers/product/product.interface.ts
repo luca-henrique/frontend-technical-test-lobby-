@@ -1,4 +1,4 @@
-import { IProduct } from "../../../components/molecules/step-2/step-2";
+import { IProduct } from "../../../components/molecules/select-products-redeem/select-products-redeem";
 
 export interface IProductContext {
   selectedProducts: IProduct[];

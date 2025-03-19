@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { mock } from "../../../i18n/mock";
 import { FormSectionLayout } from "../../layout/form-layout/form-layout";
 import { Input } from "../../atoms/input/input";
-import { BoxRow } from "../step-3/styled";
+import { BoxRow } from "../details-person-redeem/styled";
 
 export const RecipientForm = () => {
   const {

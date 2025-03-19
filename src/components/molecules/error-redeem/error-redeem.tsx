@@ -8,7 +8,7 @@ import { mock } from "../../../i18n/mock"
 import { Container } from "../../atoms/container/container"
 import { ImageError404 } from "./styled"
 
-export const Error404 = () => {
+export const ErrorRedeem = () => {
   const { title, subTitle, backButton: { url, label } } = mock.error
 
   const handleRouter = () => {

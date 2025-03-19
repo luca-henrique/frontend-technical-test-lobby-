@@ -20,7 +20,7 @@ import { IFormData } from "../../../app/providers/redeem/redeem.interface";
 import { useProduct } from "../../../app/hook/use-product";
 import { useRedeemerMutation } from "../../../service/redeems";
 
-export const Step3 = () => {
+export const DetailsPersonRedeem = () => {
   const {
     form: { title },
     common: { buttonBackStep, buttonNextStep },

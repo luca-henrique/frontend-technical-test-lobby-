@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { mock } from "../../../i18n/mock";
 import { FormSectionLayout } from "../../layout/form-layout/form-layout";
-import { BoxRow } from "../step-3/styled";
+import { BoxRow } from "../details-person-redeem/styled";
 import { Input } from "../../atoms/input/input";
 import { Select } from "../../atoms/select/select";
 import { brazilianStates } from "../../../constants/uf";
