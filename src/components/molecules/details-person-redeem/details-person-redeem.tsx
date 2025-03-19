@@ -32,10 +32,8 @@ export const DetailsPersonRedeem = () => {
     mode: "all",
   })
 
-  const { formState: { errors }, handleSubmit, getValues } = args
+  const { handleSubmit } = args
   const mutation = useRedeemerMutation();
-  console.log(getValues())
-  console.log(errors)
 
   const { nextStep, previousStep } = useStep()
   const { redeem } = useRedeem();

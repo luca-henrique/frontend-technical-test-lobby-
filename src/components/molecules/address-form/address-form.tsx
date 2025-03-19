@@ -6,6 +6,11 @@ import { Input } from "../../atoms/input/input";
 import { Select } from "../../atoms/select/select";
 import { brazilianStates } from "../../../constants/uf";
 import { countries } from "../../../constants/country";
+import { useEffect } from "react";
+import { fetchAddressByCep } from "~/service/cep";
+import { useDebounce } from "~/app/hook/use-debounce";
+
+export const DEBAUNCE_TIME_CEP_FETCH = 1500;
 
 export const AddressForm = () => {
   const {
@@ -22,7 +27,35 @@ export const AddressForm = () => {
     },
   } = mock.form;
 
-  const { control, formState: { errors } } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useFormContext();
+
+
+  const handleCepChange = async (cep: string) => {
+    if (cep.length === 10) {
+      const addressData = await fetchAddressByCep(cep);
+      if (addressData) {
+        setValue("street", addressData.street);
+        setValue("city", addressData.city);
+        setValue("neighborhood", addressData.neighborhood);
+        setValue("uf", addressData.state);
+      }
+    }
+  };
+
+  const cepValue = watch("cep");
+  const debouncedCep = useDebounce(cepValue, DEBAUNCE_TIME_CEP_FETCH); // Aplica debounce de 500ms
+
+  useEffect(() => {
+    if (debouncedCep) {
+      console.log("Buscar informações do CEP:", debouncedCep);
+      handleCepChange(debouncedCep);
+    }
+  }, [debouncedCep]);
 
   return (
     <FormSectionLayout title={title}>
@@ -35,8 +68,7 @@ export const AddressForm = () => {
           required
           type="text"
           error={!!errors?.cep?.message}
-          helperText={errors?.cep?.message}
-
+          helperText={!errors?.cep?.message}
         />
         <Input
           label={street}
@@ -45,7 +77,7 @@ export const AddressForm = () => {
           required
           type="text"
           error={!!errors?.street?.message}
-          helperText={errors?.street?.message}
+          helperText={!errors?.street?.message}
         />
       </BoxRow>
       <BoxRow>
@@ -57,7 +89,7 @@ export const AddressForm = () => {
             required
             type="text"
             error={!!errors?.number?.message}
-            helperText={errors?.number?.message}
+            helperText={!errors?.number?.message}
           />
           <Input
             label={complement}
@@ -65,7 +97,7 @@ export const AddressForm = () => {
             control={control}
             type="text"
             error={!!errors?.complement?.message}
-            helperText={errors?.complement?.message}
+            helperText={!errors?.complement?.message}
           />
         </BoxRow>
         <Input
@@ -75,7 +107,7 @@ export const AddressForm = () => {
           required
           type="text"
           error={!!errors?.neighborhood?.message}
-          helperText={errors?.neighborhood?.message}
+          helperText={!errors?.neighborhood?.message}
         />
       </BoxRow>
 
@@ -87,9 +119,12 @@ export const AddressForm = () => {
           required
           type="text"
           error={!!errors?.city?.message}
-          helperText={errors?.city?.message}
+          helperText={!errors?.city?.message}
         />
-        <BoxRow width={"100%"} sx={{ flexDirection: { mobile: "row", tablet: "row" } }}>
+        <BoxRow
+          width={"100%"}
+          sx={{ flexDirection: { mobile: "row", tablet: "row" } }}
+        >
           <Select
             label={state}
             name="uf"
@@ -97,7 +132,7 @@ export const AddressForm = () => {
             required
             options={brazilianStates}
             error={!!errors?.uf?.message}
-            helperText={errors?.uf?.message}
+            helperText={typeof errors?.uf?.message === "string" ? errors?.uf?.message : ""}
           />
           <Select
             label={country}
@@ -106,7 +141,7 @@ export const AddressForm = () => {
             required
             options={countries}
             error={!!errors?.country?.message}
-            helperText={errors?.country?.message}
+            helperText={typeof errors?.country?.message === "string" ? errors?.country?.message : ""}
           />
         </BoxRow>
       </BoxRow>

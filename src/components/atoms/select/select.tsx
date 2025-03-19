@@ -22,33 +22,38 @@ export const Select = ({
   name,
   options,
   error,
-  helperText
+  helperText,
+  required
 }: SelectCustomProps) => {
   return (
     <Controller
       control={control}
       name={name}
-      render={({ field }) => (
-        <FormControl variant="standard" fullWidth error={error}>
-          <InputLabel id={`${name}-label`}>{label}</InputLabel>
-          <CustomSelect
-            labelId={`${name}-label`} // Associando o InputLabel ao Select
-            value={field.value ?? ""}
-            onChange={field.onChange}
-            id={name}
-            label={label}
-            fullWidth
-            error={error}
-          >
-            {options.map((item) => (
-              <MenuItem key={item.value} value={item.value}>
-                {item.label}
-              </MenuItem>
-            ))}
-          </CustomSelect>
-          <FormHelperText>{helperText}</FormHelperText>
-        </FormControl>
-      )}
+      render={({ field }) => {
+        console.log(field)
+        return (
+          <FormControl variant="standard" fullWidth error={error}>
+            <InputLabel id={`${name}-label`} required={required}>{label}</InputLabel>
+            <CustomSelect
+              labelId={`${name}-label`} // Associando o InputLabel ao Select
+              value={field.value ?? ""}
+              onChange={field.onChange}
+              id={name}
+              label={label}
+              fullWidth
+              error={error}
+              required={required}
+            >
+              {options.map((item) => (
+                <MenuItem key={item.value} value={item.value}>
+                  {item.label}
+                </MenuItem>
+              ))}
+            </CustomSelect>
+            <FormHelperText>{helperText}</FormHelperText>
+          </FormControl>
+        )
+      }}
     />
   );
 };

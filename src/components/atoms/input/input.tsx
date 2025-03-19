@@ -1,5 +1,5 @@
 import { FormControl, TextField, TextFieldProps } from "@mui/material";
-import { Control, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { formatDocument } from "../../../utils/format-document";
 import { formatCep } from "../../../utils/format-cep";
 
@@ -27,8 +27,6 @@ const formatByMask = (value: string, mask?: MaskType): string => {
 };
 
 export const Input = ({ label, control, name, mask, ...props }: InputProps) => {
-
-
   return (
     <Controller
       control={control}
@@ -39,7 +37,6 @@ export const Input = ({ label, control, name, mask, ...props }: InputProps) => {
             id={name}
             fullWidth
             label={label}
-
             variant="standard"
             {...props}
             {...field}
