@@ -1,15 +1,16 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { mock } from "../../../i18n/mock";
-import { Button } from "../../atoms/button/button";
-import { Product } from "../../organisms/product/product";
-import { Copyright } from "../copyright/copyright";
-import { useRedeem } from "../../../app/hook/use-redeem";
-import { useStep } from "../../../app/hook/use-step";
-import { useProduct } from "../../../app/hook/use-product";
-import { checkIsEmpty } from "~/utils/check-is-empty";
+
+import { useRedeem } from "~/app/hook/use-redeem";
+import { useStep } from "~/app/hook/use-step";
+import { useProduct } from "~/app/hook/use-product";
+
+import { Button } from "~/components/atoms/button/button";
+import { Product } from "~/components/organisms/product/product";
+import { Copyright } from "~/components/molecules/copyright/copyright";
 import { CardForm } from "~/components/atoms/card-form/card-form";
 
-
+import { mock } from "~/i18n/mock";
+import { checkIsEmpty } from "~/utils/check-is-empty";
 
 export const SelectProductsRedeem = () => {
 
@@ -24,9 +25,6 @@ export const SelectProductsRedeem = () => {
 
 
   const isNotSelectedProducts = checkIsEmpty(selectedProducts.length)
-
-  console.log(isNotSelectedProducts)
-  console.log(selectedProducts.length)
 
   return (
     <Container
