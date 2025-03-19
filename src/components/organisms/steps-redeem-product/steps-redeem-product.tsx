@@ -16,7 +16,7 @@ const redeemSteps: Record<number, React.FC> = {
   4: ErrorRedeem,
 };
 
-export const StepsForm = () => {
+export const StepsRedeemProduct = () => {
   const { step } = useStep()
   const { redeem } = useRedeem()
 

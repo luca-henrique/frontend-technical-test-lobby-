@@ -1,10 +1,10 @@
-import { StepProvider } from "../../app/providers/step/step"
-import { StepsForm } from "../../components/organisms/steps/steps"
+import { StepProvider } from "~/app/providers/step/step"
+import { StepsRedeemProduct } from "~/components/organisms/steps-redeem-product/steps-redeem-product"
 
 export const Home = () => {
   return (
     <StepProvider>
-      <StepsForm />
+      <StepsRedeemProduct />
     </StepProvider>
   )
 }

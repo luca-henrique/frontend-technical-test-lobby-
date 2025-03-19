@@ -1,12 +1,12 @@
-import { mock } from "../../../i18n/mock"
-import { CardContainer } from "../../organisms/card-container/card-container"
-import { CustomButton as Button } from "../../atoms/button/button"
 import { Container } from "@mui/material"
-import { useStep } from "../../../app/hook/use-step"
 
+import { useStep } from "~/app/hook/use-step"
+import { mock } from "~/i18n/mock"
+
+import { CardContainer } from "~/components/organisms/card-container/card-container"
+import { Button } from "~/components/atoms/button/button"
 
 export const IntroRedeem = () => {
-
   const { nextStep } = useStep()
 
   return (
