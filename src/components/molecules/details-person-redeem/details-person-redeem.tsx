@@ -52,12 +52,15 @@ export const DetailsPersonRedeem = () => {
       redeemer_city: data.city,
       redeemer_state: data.uf,
       redeemer_country: data.country,
-      extra_question_responses: [],
       items: selectedProducts.map((product) => ({
         customer_product_id: product.customer_product_id ?? "",
         size_name: product.sizes.length > 0 ? product.sizes[0].name : "",
       })),
-
+      extra_question_responses:
+        data.extra_question?.map((q) => ({
+          extra_question_id: q.extra_question_id ?? 0,
+          answer: q.answer ?? "",
+        })) || [],
 
     };
 

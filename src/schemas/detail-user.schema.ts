@@ -7,6 +7,13 @@ import {
   VALIDATION,
 } from "./validations";
 
+const ExtraQuestionResponsesSchema = z.array(
+  z.object({
+    extra_question_id: z.number().optional(),
+    answer: z.string().optional(),
+  })
+);
+
 export const DetailsPersonRedeemSchema = z.object({
   fullName: z.string(),
   document: z
@@ -38,14 +45,7 @@ export const DetailsPersonRedeemSchema = z.object({
     .regex(/^[A-Z]{2}$/, errorMessages.address.uf.invalid),
   country: z.string().min(1, errorMessages.address.country.required),
   size: z.string().optional(),
-  hobbie: z.string().optional(),
-  birthDate: z.string().optional(),
-  salesTeam: z.string().optional(),
-  iceCreamFalvors: z.array(
-    z.object({
-      value: z.string(),
-    })
-  ),
+  extra_question: ExtraQuestionResponsesSchema,
 });
 
 export type DetailsPersonRedeemSchemaProps = z.infer<
