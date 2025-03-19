@@ -1,7 +1,7 @@
 export const VALIDATION = {
   DOCUMENT: {
     MIN_LENGTH: 11,
-    MAX_LENGTH: 14,
+    MAX_LENGTH: 18,
   },
   ADDRESS: {
     CEP_LENGTH: 8,
@@ -11,4 +11,4 @@ export const VALIDATION = {
 };
 
 export const MIN_DOCUMENT_SIZE = 11;
-export const MAX_DOCUMENT_SIZE = 14;
+export const MAX_DOCUMENT_SIZE = 18;

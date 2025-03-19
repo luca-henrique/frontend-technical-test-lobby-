@@ -1,7 +1,7 @@
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import { Select as CustomSelect, SelectProps } from "@mui/material";
+import { Select as CustomSelect, FormHelperText, SelectProps } from "@mui/material";
 import { Controller } from "react-hook-form";
 interface OptionProps {
   label: string;
@@ -13,6 +13,7 @@ export type SelectCustomProps = {
   control: any;
   name: string;
   options: OptionProps[];
+  helperText: string
 } & SelectProps;
 
 export const Select = ({
@@ -20,13 +21,15 @@ export const Select = ({
   control,
   name,
   options,
+  error,
+  helperText
 }: SelectCustomProps) => {
   return (
     <Controller
       control={control}
       name={name}
       render={({ field }) => (
-        <FormControl variant="standard" fullWidth>
+        <FormControl variant="standard" fullWidth error={error}>
           <InputLabel id={`${name}-label`}>{label}</InputLabel>
           <CustomSelect
             labelId={`${name}-label`} // Associando o InputLabel ao Select
@@ -35,6 +38,7 @@ export const Select = ({
             id={name}
             label={label}
             fullWidth
+            error={error}
           >
             {options.map((item) => (
               <MenuItem key={item.value} value={item.value}>
@@ -42,6 +46,7 @@ export const Select = ({
               </MenuItem>
             ))}
           </CustomSelect>
+          <FormHelperText>{helperText}</FormHelperText>
         </FormControl>
       )}
     />

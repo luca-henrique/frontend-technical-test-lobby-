@@ -20,7 +20,7 @@ export const DetailUserFormSchema = z.object({
   cep: z
     .string()
     .min(VALIDATION.ADDRESS.CEP_LENGTH, errorMessages.address.cep.minLength)
-    .regex(/^\d{5}-?\d{3}$/, errorMessages.address.cep.invalid),
+    .regex(/^\d{2}\.\d{3}-\d{3}$/, errorMessages.address.cep.invalid),
   street: z.string().min(1, errorMessages.address.street.required),
   number: z.string().min(1, errorMessages.address.number.required),
   complement: z
@@ -37,11 +37,11 @@ export const DetailUserFormSchema = z.object({
     .length(VALIDATION.ADDRESS.UF_LENGTH, errorMessages.address.uf.invalid)
     .regex(/^[A-Z]{2}$/, errorMessages.address.uf.invalid),
   country: z.string().min(1, errorMessages.address.country.required),
-  size: z.string(),
-  hobbie: z.string(),
-  birthDate: z.string(),
-  salesTeam: z.string(),
-  iceCreamFalvors: z.string(),
+  size: z.string().optional(),
+  hobbie: z.string().optional(),
+  birthDate: z.string().optional(),
+  salesTeam: z.string().optional(),
+  iceCreamFalvors: z.string().optional(),
 });
 
 export type FormSchemaProps = z.infer<typeof DetailUserFormSchema>;

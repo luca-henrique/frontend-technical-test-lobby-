@@ -2,10 +2,12 @@ import { mock } from "../../../i18n/mock"
 import { CardContainer } from "../../organisms/card-container/card-container"
 import { CustomButton as Button } from "../../atoms/button/button"
 import { Container } from "@mui/material"
+import { useStep } from "../../../app/hook/use-step"
 
 
 export const Step1 = () => {
 
+  const { nextStep } = useStep()
 
   return (
     <Container
@@ -22,7 +24,7 @@ export const Step1 = () => {
       }}
     >
       <CardContainer {...mock.intro}>
-        <Button type="submit" variant="contained" disableElevation >Começar!</Button>
+        <Button variant="contained" onClick={() => nextStep()} disableElevation >Começar!</Button>
       </CardContainer>
     </Container>
   )

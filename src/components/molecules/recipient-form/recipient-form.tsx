@@ -9,7 +9,7 @@ export const RecipientForm = () => {
     recipientForm: { title, fullName, document, email },
   } = mock.form;
 
-  const { control } = useFormContext();
+  const { control, formState: { errors } } = useFormContext();
 
   return (
     <FormSectionLayout title={title}>
@@ -19,6 +19,8 @@ export const RecipientForm = () => {
         control={control}
         required
         type="text"
+        error={!!errors?.fullName?.message}
+        helperText={errors?.fullName?.message}
       />
       <BoxRow >
         <Input
@@ -28,6 +30,8 @@ export const RecipientForm = () => {
           control={control}
           required
           type="text"
+          error={!!errors?.document?.message}
+          helperText={errors?.document?.message}
         />
         <Input
           label={email}
@@ -35,6 +39,8 @@ export const RecipientForm = () => {
           control={control}
           required
           type="email"
+          error={!!errors?.email?.message}
+          helperText={errors?.email?.message}
         />
       </BoxRow>
     </FormSectionLayout>

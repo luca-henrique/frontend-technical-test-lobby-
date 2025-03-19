@@ -6,43 +6,23 @@ const toggleProduct = (product: IProduct) => {
 };
 import { IProduct } from "../../molecules/step-2/step-2";
 import { CheckProduct } from "../../molecules/check-product/check-product";
-import { useState } from "react";
-import { Controller, useFieldArray, useFormContext } from "react-hook-form";
+import { useProduct } from "../../../app/hook/use-product";
 
-export interface IProductProps {
+export interface ProductProps {
   product?: IProduct;
+
 }
 
 
-type FieldProps = IProduct & {
-  id: string
-}
+export const Product = ({ product }: ProductProps) => {
 
-export const Product = ({ product }: IProductProps) => {
-
-  const { watch, control } = useFormContext()
-
-  const { selectProductStep } = watch()
-
-  const { append, fields, remove } = useFieldArray({
-    control,
-    name: "selectProductStep",
-  })
-
-  console.log(fields)
-
-
-  const isChecked = fields.some(
+  const { toggleProduct, selectedProducts } = useProduct();
+  const isChecked = selectedProducts.some(
     (p) => p.customer_product_id === (product as IProduct).customer_product_id
   );
 
-  const handleSelect = (product: IProduct) => {
-    if (isChecked) {
-      remove(product.id)
-    } else {
-      append(product)
-    }
-
+  const handleSelect = () => {
+    toggleProduct(product as IProduct);
   };
 
   if (product?.quantity === 0) return;
@@ -71,9 +51,9 @@ export const Product = ({ product }: IProductProps) => {
           maxWidth: 261,
         },
       }}
-      onClick={() => handleSelect(product)}
+      onClick={handleSelect}
     >
-      <CheckProduct checked={isChecked} control={control} />
+      <CheckProduct checked={isChecked} />
       <img src={'https://fakeimg.pl/260x260'} width={260} height={260} alt="text" />
       <Typography component="p" mt={2} fontWeight={600}>
         {product?.name}

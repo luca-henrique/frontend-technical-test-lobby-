@@ -38,3 +38,5 @@ npm run dev
 [x] - adicionar zod
 [x] - config provider tanstack query
 [] - config de pastas do core
+
+- auto complete form (teste)

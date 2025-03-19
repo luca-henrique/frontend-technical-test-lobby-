@@ -22,7 +22,7 @@ export const AddressForm = () => {
     },
   } = mock.form;
 
-  const { control } = useFormContext();
+  const { control, formState: { errors } } = useFormContext();
 
   return (
     <FormSectionLayout title={title}>
@@ -34,6 +34,9 @@ export const AddressForm = () => {
           control={control}
           required
           type="text"
+          error={!!errors?.cep?.message}
+          helperText={errors?.cep?.message}
+
         />
         <Input
           label={street}
@@ -41,6 +44,8 @@ export const AddressForm = () => {
           control={control}
           required
           type="text"
+          error={!!errors?.street?.message}
+          helperText={errors?.street?.message}
         />
       </BoxRow>
       <BoxRow>
@@ -51,12 +56,16 @@ export const AddressForm = () => {
             control={control}
             required
             type="text"
+            error={!!errors?.number?.message}
+            helperText={errors?.number?.message}
           />
           <Input
             label={complement}
             name="complement"
             control={control}
             type="text"
+            error={!!errors?.complement?.message}
+            helperText={errors?.complement?.message}
           />
         </BoxRow>
         <Input
@@ -65,6 +74,8 @@ export const AddressForm = () => {
           control={control}
           required
           type="text"
+          error={!!errors?.neighborhood?.message}
+          helperText={errors?.neighborhood?.message}
         />
       </BoxRow>
 
@@ -75,6 +86,8 @@ export const AddressForm = () => {
           control={control}
           required
           type="text"
+          error={!!errors?.city?.message}
+          helperText={errors?.city?.message}
         />
         <BoxRow width={"100%"} sx={{ flexDirection: { mobile: "row", tablet: "row" } }}>
           <Select
@@ -83,6 +96,8 @@ export const AddressForm = () => {
             control={control}
             required
             options={brazilianStates}
+            error={!!errors?.uf?.message}
+            helperText={errors?.uf?.message}
           />
           <Select
             label={country}
@@ -90,6 +105,8 @@ export const AddressForm = () => {
             control={control}
             required
             options={countries}
+            error={!!errors?.country?.message}
+            helperText={errors?.country?.message}
           />
         </BoxRow>
       </BoxRow>

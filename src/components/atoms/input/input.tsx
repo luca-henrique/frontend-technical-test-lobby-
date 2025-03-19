@@ -39,6 +39,7 @@ export const Input = ({ label, control, name, mask, ...props }: InputProps) => {
             id={name}
             fullWidth
             label={label}
+
             variant="standard"
             {...props}
             {...field}

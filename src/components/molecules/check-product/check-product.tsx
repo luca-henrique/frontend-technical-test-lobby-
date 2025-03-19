@@ -2,12 +2,12 @@ import { Box } from "@mui/material";
 
 import CheckIcon from "@mui/icons-material/Check";
 import { grey } from "@mui/material/colors";
+import { Controller } from "react-hook-form";
 
 
 
 export interface ICheckProduct {
   checked: boolean;
-  control: any
 }
 
 export const CheckProduct = ({ checked }: ICheckProduct) => {
