@@ -20,7 +20,7 @@ export const RecipientForm = () => {
         required
         type="text"
         error={!!errors?.fullName?.message}
-        helperText={errors?.fullName?.message}
+        helperText={typeof errors?.fullName?.message === "string" ? errors?.fullName?.message : ""}
       />
       <BoxRow >
         <Input
@@ -31,7 +31,7 @@ export const RecipientForm = () => {
           required
           type="text"
           error={!!errors?.document?.message}
-          helperText={errors?.document?.message}
+          helperText={typeof errors?.document?.message === "string" ? errors?.document?.message : ""}
         />
         <Input
           label={email}
@@ -40,7 +40,7 @@ export const RecipientForm = () => {
           required
           type="email"
           error={!!errors?.email?.message}
-          helperText={errors?.email?.message}
+          helperText={typeof errors?.email?.message === "string" ? errors?.email?.message : ""}
         />
       </BoxRow>
     </FormSectionLayout>

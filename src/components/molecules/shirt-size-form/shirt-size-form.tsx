@@ -11,7 +11,7 @@ export const ShirtSizeForm = () => {
     size: { title, shirt },
   } = mock.form;
 
-  const { control } = useFormContext();
+  const { control, formState: { errors } } = useFormContext();
 
   return (
     <FormSectionLayout title={title}>
@@ -22,10 +22,11 @@ export const ShirtSizeForm = () => {
       >
         <Select
           label={shirt}
-          name="country"
+          name="size"
           control={control}
           required
           options={sizes}
+          helperText={typeof errors?.size?.message === "string" ? errors?.size?.message : ""}
         />
       </Box>
     </FormSectionLayout>

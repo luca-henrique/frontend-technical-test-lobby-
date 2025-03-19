@@ -30,12 +30,11 @@ export const Select = ({
       control={control}
       name={name}
       render={({ field }) => {
-        console.log(field)
         return (
           <FormControl variant="standard" fullWidth error={error}>
             <InputLabel id={`${name}-label`} required={required}>{label}</InputLabel>
             <CustomSelect
-              labelId={`${name}-label`} // Associando o InputLabel ao Select
+              labelId={`${name}-label`}
               value={field.value ?? ""}
               onChange={field.onChange}
               id={name}
