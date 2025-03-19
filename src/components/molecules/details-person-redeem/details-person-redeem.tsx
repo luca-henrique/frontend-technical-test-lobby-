@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 
 import { Copyright } from "../copyright/copyright";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CustomButton } from "../../atoms/button/button";
+import { Button } from "../../atoms/button/button";
 import { RecipientForm } from "../recipient-form/recipient-form";
 import { AddressForm } from "../address-form/address-form";
 import { ShirtSizeForm } from "../shirt-size-form/shirt-size-form";
@@ -120,8 +120,8 @@ export const DetailsPersonRedeem = () => {
               width={"100%"}
               marginBottom={"40px"}
             >
-              <CustomButton variant="outlined" onClick={() => previousStep()}>{buttonBackStep}</CustomButton>
-              <CustomButton type="submit">{buttonNextStep}</CustomButton>
+              <Button variant="outlined" onClick={() => previousStep()}>{buttonBackStep}</Button>
+              <Button type="submit">{buttonNextStep}</Button>
             </Box>
             <Copyright />
           </CardForm>

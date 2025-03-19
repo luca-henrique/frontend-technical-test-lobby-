@@ -48,6 +48,9 @@ if (theme.components) {
         background: "#fff",
         border: "1px solid #64748B",
         color: "#64748B"
+      },
+      disabled: {
+        background: "#22007F"
       }
     }
   }

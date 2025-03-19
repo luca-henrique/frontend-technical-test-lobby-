@@ -1,31 +1,32 @@
 import { Box, Typography } from "@mui/material";
 
-// Define or import the toggleProduct function
-const toggleProduct = (product: IProduct) => {
-  // Implementation of toggleProduct
-};
-import { IProduct } from "../../molecules/select-products-redeem/select-products-redeem";
+
 import { CheckProduct } from "../../molecules/check-product/check-product";
 import { useProduct } from "../../../app/hook/use-product";
+import { ProductProps } from "~/types/product";
+import { checkIsEmpty } from "~/utils/check-is-empty";
 
-export interface ProductProps {
-  product?: IProduct;
 
+
+interface ProductComponentProps {
+  product: ProductProps
 }
 
 
-export const Product = ({ product }: ProductProps) => {
+export const Product = ({ product }: ProductComponentProps) => {
 
   const { toggleProduct, selectedProducts } = useProduct();
   const isChecked = selectedProducts.some(
-    (p) => p.customer_product_id === (product as IProduct).customer_product_id
+    (p) => p.customer_product_id === product.customer_product_id
   );
 
   const handleSelect = () => {
-    toggleProduct(product as IProduct);
+    toggleProduct(product);
   };
 
-  if (product?.quantity === 0) return;
+  const isQuantityProductEmpty = checkIsEmpty(product?.quantity)
+
+  if (isQuantityProductEmpty) return;
 
   return (
 
@@ -54,7 +55,7 @@ export const Product = ({ product }: ProductProps) => {
       onClick={handleSelect}
     >
       <CheckProduct checked={isChecked} />
-      <img src={'https://fakeimg.pl/260x260'} width={260} height={260} alt="text" />
+      <img src={product.image_url} width={260} height={260} alt="text" />
       <Typography component="p" mt={2} fontWeight={600}>
         {product?.name}
       </Typography>

@@ -3,7 +3,7 @@ import { ImageLogo } from "../image-logo/image-logo"
 
 import Error404Img from "../../../assets/images/erro-404.png"
 import { Typography } from "../../atoms/typography/typography"
-import { CustomButton } from "../../atoms/button/button"
+import { Button } from "../../atoms/button/button"
 import { mock } from "../../../i18n/mock"
 import { Container } from "../../atoms/container/container"
 import { ImageError404 } from "./styled"
@@ -45,7 +45,7 @@ export const ErrorRedeem = () => {
         >
           {subTitle}
         </Typography>
-        <CustomButton onClick={handleRouter}>{label}</CustomButton>
+        <Button onClick={handleRouter}>{label}</Button>
       </Box>
     </Container>
   )

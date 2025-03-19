@@ -1,34 +1,20 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { CardForm } from "../details-person-redeem/styled";
 import { mock } from "../../../i18n/mock";
-import { CustomButton } from "../../atoms/button/button";
+import { Button } from "../../atoms/button/button";
 import { Product } from "../../organisms/product/product";
 import { Copyright } from "../copyright/copyright";
 import { useRedeem } from "../../../app/hook/use-redeem";
 import { useStep } from "../../../app/hook/use-step";
 import { useProduct } from "../../../app/hook/use-product";
+import { checkIsEmpty } from "~/utils/check-is-empty";
+import { CardForm } from "~/components/atoms/card-form/card-form";
 
-const IS_EMPTY = 0
-
-export interface IProduct {
-  customer_product_id: string;
-  name: string;
-  quantity: number;
-  optional: boolean;
-  image_url: string;
-  sizes_grid: {
-    name: string;
-  } | null;
-  sizes: Array<{
-    id: string;
-    name: string;
-  }>;
-}
 
 
 export const SelectProductsRedeem = () => {
 
   const { redeem, isLoading, isError, error } = useRedeem();
+  const { selectedProducts } = useProduct()
   const { nextStep, previousStep } = useStep();
 
   const {
@@ -36,9 +22,11 @@ export const SelectProductsRedeem = () => {
     common: { buttonBackStep, buttonNextStep },
   } = mock;
 
-  const { selectedProducts } = useProduct()
 
-  const isNotSelectedProducts = selectedProducts.length <= IS_EMPTY
+  const isNotSelectedProducts = checkIsEmpty(selectedProducts.length)
+
+  console.log(isNotSelectedProducts)
+  console.log(selectedProducts.length)
 
   return (
     <Container
@@ -103,10 +91,10 @@ export const SelectProductsRedeem = () => {
           width={"100%"}
           marginBottom={"40px"}
         >
-          <CustomButton variant="outlined" onClick={() => previousStep()}>
+          <Button variant="outlined" onClick={() => previousStep()}>
             {buttonBackStep}
-          </CustomButton>
-          <CustomButton disabled={isNotSelectedProducts} onClick={() => nextStep()}>{buttonNextStep}</CustomButton>
+          </Button>
+          <Button disabled={isNotSelectedProducts} onClick={() => nextStep()}>{buttonNextStep}</Button>
         </Box>
         <Copyright />
       </CardForm>
