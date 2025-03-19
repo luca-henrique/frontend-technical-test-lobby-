@@ -37,25 +37,38 @@ const theme = createTheme({
       lg: 1024
     }
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: "60px",
+          padding: "12px 20px",
+          background: "#22007F",
+          fontWeight: 600,
+          fontSize: "14px",
+          "&.Mui-disabled": {
+            "backgroundColor": "#C8BFDF",
+            "color": "#fff"
+          },
+
+          "&:hover": {
+            "backgroundColor": "#3100B6",
+            "color": "#fff"
+          },
+
+        },
+        outlined: {
+          background: "#fff",
+          border: "1px solid #64748B",
+          color: "#64748B",
+        },
+
+      },
+    },
+  },
 
 });
 
-if (theme.components) {
-  theme.components.MuiButton = {
-    styleOverrides: {
-      root: { borderRadius: "60px", padding: "12px 20px", background: "#22007F", fontWeight: 600, fontSize: "14px" },
-      outlined: {
-        background: "#fff",
-        border: "1px solid #64748B",
-        color: "#64748B"
-      },
-      disabled: {
-        background: "#22007F"
-      }
-    }
-  }
 
-
-}
 
 export default theme;
