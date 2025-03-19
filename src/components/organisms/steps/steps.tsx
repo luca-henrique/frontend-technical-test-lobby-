@@ -9,24 +9,25 @@ import { GiftSuccessRedeemed } from "../../molecules/gift-success-redeemed/gift-
 import { IntroRedeem } from "../../molecules/intro-redeem/intro-redeem"
 import { SelectProductsRedeem } from "../../molecules/select-products-redeem/select-products-redeem"
 import { DetailsPersonRedeem } from "../../molecules/details-person-redeem/details-person-redeem"
+import { useMemo } from "react"
 
-const steps = {
+const redeemSteps: Record<number, React.FC> = {
   0: IntroRedeem,
   1: SelectProductsRedeem,
   2: DetailsPersonRedeem,
   3: GiftSuccessRedeemed,
-  4: ErrorRedeem
-}
+  4: ErrorRedeem,
+};
 
 export const StepsForm = () => {
   const { step } = useStep()
   const { redeem } = useRedeem()
 
-  if (redeem && redeem.status !== "ACTIVE") {
+  const CurrentStep = useMemo(() => redeemSteps[step] ?? ErrorRedeem, [step]);
+
+  if (!redeem || redeem.status !== "ACTIVE") {
     return <ErrorRedeem />;
   }
-
-  const CurrentStep = steps[step]
 
   return <CurrentStep />
 }
