@@ -1,7 +1,7 @@
 import { Container } from "../../atoms/container/container";
 import { Typography } from "../../atoms/typography/typography";
 
-import { mock } from "../../../i18n/mock";
+import { mock } from "~/i18n/mock";
 import { Box } from "@mui/material";
 
 import { Copyright } from "../copyright/copyright";
@@ -13,12 +13,11 @@ import { ShirtSizeForm } from "../shirt-size-form/shirt-size-form";
 import { ExtraQuestionForm } from "../extra-question-form/extra-question-form";
 import { CardForm } from "./styled";
 import { useForm, FormProvider } from "react-hook-form";
-import { useStep } from "../../../app/hook/use-step";
-import { DetailUserFormSchema } from "../../../schemas/detail-user.schema";
-import { useRedeem } from "../../../app/hook/use-redeem";
-import { IFormData } from "../../../app/providers/redeem/redeem.interface";
-import { useProduct } from "../../../app/hook/use-product";
-import { useRedeemerMutation } from "../../../service/redeems";
+import { useStep } from "~/app/hook/use-step";
+import { DetailsPersonRedeemSchema, DetailsPersonRedeemSchemaProps } from "~/schemas/detail-user.schema";
+import { useRedeem } from "~/app/hook/use-redeem";
+import { useProduct } from "~/app/hook/use-product";
+import { useRedeemerMutation } from "~/service/redeems";
 
 export const DetailsPersonRedeem = () => {
   const {
@@ -28,9 +27,9 @@ export const DetailsPersonRedeem = () => {
 
   const { selectedProducts } = useProduct();
 
-  const args = useForm({
-    resolver: zodResolver(DetailUserFormSchema),
-    mode: "onSubmit ",
+  const args = useForm<DetailsPersonRedeemSchemaProps>({
+    resolver: zodResolver(DetailsPersonRedeemSchema),
+    mode: "all",
   })
 
   const { formState: { errors }, handleSubmit, getValues } = args
@@ -41,8 +40,7 @@ export const DetailsPersonRedeem = () => {
   const { nextStep, previousStep } = useStep()
   const { redeem } = useRedeem();
 
-  const onSubmit = (data: IFormData) => {
-    console.log('form', data)
+  const onSubmit = (data: DetailsPersonRedeemSchemaProps) => {
     const validData = {
       id: redeem?.id ?? "",
       redeemer_name: data.fullName,
@@ -56,11 +54,7 @@ export const DetailsPersonRedeem = () => {
       redeemer_city: data.city,
       redeemer_state: data.uf,
       redeemer_country: data.country,
-      extra_question_responses:
-        data.extra_question_responses?.map((q) => ({
-          extra_question_id: q.extra_question_id ?? 0,
-          answer: q.answer ?? "",
-        })) || [],
+      extra_question_responses: [],
       items: selectedProducts.map((product) => ({
         customer_product_id: product.customer_product_id ?? "",
         size_name: product.sizes.length > 0 ? product.sizes[0].name : "",

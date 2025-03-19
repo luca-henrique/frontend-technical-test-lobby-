@@ -1,4 +1,4 @@
-import { IProduct } from "../../../components/molecules/select-products-redeem/select-products-redeem";
+import { ProductProps } from "~/types/product";
 
 export interface IRedeem {
   id?: string | undefined;
@@ -9,7 +9,7 @@ export interface IRedeem {
   background_color: string;
   button_color: string;
   status: string;
-  items: IProduct[];
+  items: ProductProps[];
   extra_questions: IExtraQuestions[];
 }
 
@@ -27,26 +27,6 @@ export interface IExtraQuestions {
   position: number;
   question: string;
 }
-
-export interface IFormData {
-  full_name: string;
-  cpf_cnpj: string;
-  email: string;
-  cep: string;
-  street: string;
-  number: number;
-  complement?: string | null;
-  neighborhood: string;
-  city: string;
-  state: string;
-  country: string;
-  sizes?: string;
-  extra_question_responses?: Array<{
-    extra_question_id?: number;
-    answer?: string;
-  }>;
-}
-
 interface IExtraQuestionResponse {
   extra_question_id: number;
   answer: string;

@@ -7,7 +7,7 @@ import {
   VALIDATION,
 } from "./validations";
 
-export const DetailUserFormSchema = z.object({
+export const DetailsPersonRedeemSchema = z.object({
   fullName: z.string(),
   document: z
     .string()
@@ -41,7 +41,13 @@ export const DetailUserFormSchema = z.object({
   hobbie: z.string().optional(),
   birthDate: z.string().optional(),
   salesTeam: z.string().optional(),
-  iceCreamFalvors: z.string().optional(),
+  iceCreamFalvors: z.array(
+    z.object({
+      value: z.string(),
+    })
+  ),
 });
 
-export type FormSchemaProps = z.infer<typeof DetailUserFormSchema>;
+export type DetailsPersonRedeemSchemaProps = z.infer<
+  typeof DetailsPersonRedeemSchema
+>;
