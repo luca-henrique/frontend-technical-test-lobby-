@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.67.2",
+    "@types/node": "^22.13.10",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
