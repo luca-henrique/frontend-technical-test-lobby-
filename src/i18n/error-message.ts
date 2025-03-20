@@ -1,4 +1,4 @@
-import { VALIDATION } from "./validations";
+import { VALIDATION } from "../validations/validations";
 
 export const errorMessages = {
   document: {
@@ -34,5 +34,18 @@ export const errorMessages = {
     country: {
       required: "O país é obrigatório",
     },
+  },
+  product: {
+    idRequired: "ID do produto é obrigatório",
+    nameRequired: "Nome do produto é obrigatório",
+    quantityPositive: "A quantidade deve ser um número inteiro positivo",
+    imageUrlInvalid: "URL da imagem inválida",
+    sizeGridNameRequired: "Nome da grade de tamanhos é obrigatório",
+    sizeIdRequired: "ID do tamanho é obrigatório",
+    sizeNameRequired: "Nome do tamanho é obrigatório",
+    sizeMin: "Pelo menos um tamanho deve ser informado",
+  },
+  tags: {
+    nonEmpty: "Tags não pode ser vazio",
   },
 };

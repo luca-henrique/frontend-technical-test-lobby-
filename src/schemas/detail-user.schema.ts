@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { validateDocument } from "../utils/validate-document";
-import { errorMessages } from "./error-message";
+import { errorMessages } from "../i18n/error-message";
 import {
   MIN_DOCUMENT_SIZE,
   MAX_DOCUMENT_SIZE,
   VALIDATION,
-} from "./validations";
+} from "../validations/validations";
 
 const ExtraQuestionResponsesSchema = z.array(
   z.object({
