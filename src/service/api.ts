@@ -1,10 +1,10 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-const apiKey = "a_g5AqXbhQySR50wkXMQycmnUb-pQ783dLS1F7yN6gY";
+const apiKey = import.meta.env.VITE_APP_ACCESS_TOKEN;
 const encodedCredentials = btoa(`${apiKey}:`);
 
 const config: AxiosRequestConfig = {
-  baseURL: "https://server.lobby.tech/",
+  baseURL: import.meta.env.VITE_APP_BASE_API_URL,
   headers: {
     "Content-type": "application/json",
     Accept: "application/json",
