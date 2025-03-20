@@ -1,42 +1,98 @@
-# Material UI - Vite.js in TypeScript
+<a href="./LICENSE">![GitHub](https://img.shields.io/github/license/everton-dgn/pizzaria_toffanetto?style=plastic)</a>
+![GitHub repo size](https://img.shields.io/github/repo-size/everton-dgn/pizzaria_toffanetto?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/everton-dgn/pizzaria_toffanetto?color=yellow&style=plastic)
 
-https://www.figma.com/design/M9hM2EQYP5kISQStowXnNL/Teste-Frontend?node-id=168-4&t=e2h3aQOYM17Ab96I-0
-https://github.com/NunesXdecK/eadskill-challenge/tree/main
-https://server.lobby.tech/api-docs/index.html
+<h1 align="center">Lobby</h1>
 
-Nossas expectativas
-A equipe de tecnologia da Lobby tem alguns princípios onde baseamos nosso trabalho diário. Como projetar seu código de maneira a facilitar o entendimento.
+<br />
 
-Portanto, para nós é mais importante um código de fácil leitura do que um que utilize recursos arquitetados complexos e desnecessários.
+# :pushpin: Índice de conteúdos
 
-O que gostariamos de ver:
+- [Sobre o Projeto](#monocle_face-sobre-o-projeto)
+- [Tecnologias](#globe_with_meridians-tecnologias-usadas)
+- [Instalação](#question-como-instalar-e-executar-o-projeto)
+- [Autor](#closed_book-autor)
 
-O código deve ser fácil de ler. Clean Code pode te ajudar
+<br />
 
-Notas gerais e informações sobre a versão da linguagem e outras informações importantes para executar seu código.
+# :monocle_face: Sobre o Projeto
 
-Código que se preocupa com a performance (Complexidade de Algoritmo)
+Este desafio consite no desenvolvimento de uma API que será utilizada para disponibilizar páginas de resgates.
 
-O seu código deve cobrir todo os casos de usos presentes no README, mesmo que não hajam testes implementados para tal.
+Uma página de resgate é um formulário onde usuários podem preencher seus dados, que serão enviados para aprovação.
 
-Você deve enviar o código-fonte da solução para nós como um arquivo contendo apenas a solução de código ou pode fazer o upload da solução para repositórios públicos (GitHub, BitBucket, etc) desde que nos envie o último commit
+Após a aprovação de um resgate, o usuário irá receber os itens relacionados ao resgate de acordo com as informações preenchidas.
 
-Testes serão um diferencial!
+<br />
 
-Install it and run:
+---
+
+# :globe_with_meridians: Tecnologias Usadas
+
+⚛ React Vite
+
+🔥 TypeScript
+
+<br />
+
+# :question: Como instalar e executar o projeto
+
+<br />
+
+## Acessando direto pelo site:
+
+- Você pode clicar nesse [link](https://frontend-technical-test-lobby.vercel.app/) e acessar a aplicação que está hospedada na plataforma Vercel.
+
+<br />
+
+## Executar na máquina local:
+
+(certifique-se de ter instalado na sua máquina o [Node](https://nodejs.org/en/) e o [Yarn](https://yarnpkg.com/))
+
+1. Abra o terminal na pasta desejada para clonar o repositório e execute o comando:
 
 ```bash
-npm install
-npm run dev
+git clone https://github.com/luca-henrique/frontend-technical-test-lobby-
 ```
 
-### TASK
+2. Depois de concluído, execute os seguintes comandos para iniciar o server e será aberto no seu navegador uma aba com o projeto já funcionando:
 
-[x] - adicionar react-router-dom
-[x] - adicionar tankstack query
-[x] - adicionar react-hook-form
-[x] - adicionar zod
-[x] - config provider tanstack query
-[] - config de pastas do core
+```bash
+cd frontend-technical-test-lobby-
+```
 
-- auto complete form (teste)
+Para instalar as dependências:
+
+```bash
+ npm i
+```
+
+Inciando o server:
+
+```bash
+npm dev
+```
+
+Build:
+
+```bash
+npm build
+```
+
+Testar Build:
+
+```bash
+npm start
+```
+
+3. Por fim, abra a pasta clonada em seu editor de códigos favorito e faça as suas alterações! xD
+
+<br />
+
+---
+
+# :closed_book: Autor
+
+Feito por [Lucas Henrique Paes](https://www.linkedin.com/in/luca-paes/).
+
+### :link: LinkedIn: https://www.linkedin.com/in/luca-paes/
