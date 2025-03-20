@@ -1,6 +1,6 @@
-import { IProduct } from "../../../components/molecules/select-products-redeem/select-products-redeem";
+import { ProductProps } from "~/types/product";
 
 export interface IProductContext {
-  selectedProducts: IProduct[];
-  toggleProduct: (product: IProduct) => void;
+  selectedProducts: ProductProps[];
+  toggleProduct: (product: ProductProps) => void;
 }
