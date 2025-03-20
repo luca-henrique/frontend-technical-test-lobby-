@@ -17,6 +17,7 @@
     "@mui/icons-material": "next",
     "@mui/material": "next",
     "@tanstack/react-query": "^5.67.3",
+    "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.8.3",
     "dayjs": "^1.11.13",
     "i18next": "^24.2.3",

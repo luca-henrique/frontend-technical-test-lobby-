@@ -20,6 +20,7 @@ export const StepsRedeemProduct = () => {
   const { step } = useStep()
   const { redeem } = useRedeem()
 
+
   if (redeem && redeem.status !== "ACTIVE") {
     return <ErrorRedeem />;
   }
