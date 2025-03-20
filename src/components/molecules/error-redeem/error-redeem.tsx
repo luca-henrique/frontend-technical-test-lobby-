@@ -1,19 +1,18 @@
 import { Box } from "@mui/material"
 import { ImageLogo } from "../image-logo/image-logo"
 
-import Error404Img from "../../../assets/images/erro-404.png"
-import { Typography } from "../../atoms/typography/typography"
-import { Button } from "../../atoms/button/button"
-import { mock } from "../../../i18n/mock"
-import { Container } from "../../atoms/container/container"
+import Error404Img from "~/assets/images/erro-404.png"
+import { Typography } from "~/components/atoms/typography/typography"
+import { Button } from "~/components/atoms/button/button"
+import { mock } from "~/i18n/mock"
+import { Container } from "~/components/atoms/container/container"
 import { ImageError404 } from "./styled"
+import { useStep } from "~/app/hook/use-step"
 
 export const ErrorRedeem = () => {
-  const { title, subTitle, backButton: { url, label } } = mock.error
+  const { title, subTitle, backButton: { label } } = mock.error
 
-  const handleRouter = () => {
-    console.log(url)
-  }
+  const { startStep } = useStep()
 
   return (
     <Container maxWidth={false} disableGutters sx={{ background: "#fff", height: "100vh", padding: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -45,7 +44,7 @@ export const ErrorRedeem = () => {
         >
           {subTitle}
         </Typography>
-        <Button onClick={handleRouter}>{label}</Button>
+        <Button onClick={() => startStep()}>{label}</Button>
       </Box>
     </Container>
   )

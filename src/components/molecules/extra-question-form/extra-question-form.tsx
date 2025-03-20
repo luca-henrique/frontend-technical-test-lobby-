@@ -21,7 +21,6 @@ export const ExtraQuestionForm = () => {
 
   const { extra_question } = watch()
 
-  console.log(extra_question)
 
   return (
     <FormSectionLayout title={title}>

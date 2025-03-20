@@ -14,8 +14,12 @@ const StepProvider: FC<StepProps> = ({ children }) => {
     setStep((prevStep) => prevStep - 1);
   }, []);
 
+  const startStep = useCallback(() => {
+    setStep(0);
+  }, []);
+
   return (
-    <StepContext.Provider value={{ nextStep, previousStep, step }}>
+    <StepContext.Provider value={{ nextStep, previousStep, startStep, step }}>
       {children}
     </StepContext.Provider>
   );

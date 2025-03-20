@@ -52,7 +52,6 @@ export const AddressForm = () => {
 
   useEffect(() => {
     if (debouncedCep) {
-      console.log("Buscar informações do CEP:", debouncedCep);
       handleCepChange(debouncedCep);
     }
   }, [debouncedCep]);

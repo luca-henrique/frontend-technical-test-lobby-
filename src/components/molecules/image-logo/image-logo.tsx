@@ -1,4 +1,4 @@
-import Logo from "../../../assets/icons/logo.svg";
+import Logo from "~/assets/icons/logo.svg";
 import { Image } from "./styled";
 
 type ImageLogoProps = React.ComponentProps<typeof Image>
